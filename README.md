@@ -22,32 +22,64 @@ Para obter mais ajuda sobre o Angular CLI, use `ng help` ou consulte a página [
 
 # Github
 
-## Crie um repositório
-Execute os seguintes comandos na pasta local para enviar para o github `git init` e `git remote add origin https://github.com/juliomendes160/tinus1.git` 
+## Sicronizar repositório
+
+`git init` 
+
+`git remote add origin https://github.com/juliomendes160/tinus1.git` 
 
 ## Permissões de fluxo de trabalho
 Para que os arquivos de produção sejam gerados adicione o script do fluxo de trabalho e der as permissões necessárias.
 
 # Google Cloud
 
-## Criar máquina virtual
-Adicione o seguinte script na criação da máquina virtual 
-`#!/bin/bash` 
-`sudo apt-get update` 
-`sudo apt-get install apache2 -y` 
-`sudo chown -R www-data:www-data /var/www/html`
-`sudo /usr/sbin/usermod -aG www-data juliomendes160` 
-`sudo chmod g+w /var/www/html` 
-`sudo chmod g+s /var/www/html`
+## Criar VM
+```
+    #!/bin/bash
+    sudo apt-get update 
+    sudo apt-get install apache2 -y 
+    sudo chown -R www-data:www-data /var/www/html
+    sudo /usr/sbin/usermod -aG www-data juliomendes160 
+    sudo chmod g+w /var/www/html
+    sudo chmod g+s /var/www/html
+```
 
 ## Gerar chaves ssh
-Execute `mkdir -p ../key` e `ssh-keygen -t rsa -b 4096 -f ../key/ssh -C juliomendes160` para criar a pasta e as chaves de acesso remoto, adicione a chave ssh.
+`mkdir -p ../key` 
 
-## Enviar os arquivos locais
-Execute o comando `scp -r -i ../key/ssh ../docs juliomendes160@34.151.198.88:/var/www/html` para enviar os arquivos locais para o servidor, caso queira apenas sincronizar `rsync -r -i ../key/ssh ../docs juliomendes160@34.151.198.88:/var/www/html`
+`ssh-keygen -t rsa -b 4096 -f ../key/ssh -C juliomendes160`
+
+## Enviar arquivos
+`scp -r -i ../key/ssh ../docs juliomendes160@35.198.46.4:/var/www/html` 
+
+`rsync -r -i ../key/ssh ../docs juliomendes160@34.151.198.88:/var/www/html`
 
 ## Conexão remota
-Para fazer a conexão remota execute o comando, lembre-se de pegar o IP externo correto `ssh-keygen -R 34.151.198.88` e `ssh -i ../key/ssh juliomendes160@34.151.198.88`.
+`ssh-keygen -R 35.198.46.4` 
 
-## Configurar pasta do servidor
-Execute o seguinte comando para alterar a pasta do servidor `sudo vi /etc/apache2/sites-available/000-default.conf` atualize o sevirdor  `sudo service apache2 restart`.
+`ssh -i ../key/ssh juliomendes160@35.198.46.4`.
+
+## Configurar servidor
+`sudo vi /etc/apache2/sites-available/000-default.conf`
+
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www/html/docs
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    <Directory /var/www/html/docs>
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+        RewriteEngine On
+        RewriteBase /docs/
+        RewriteRule ^index\.html$ - [L]
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule . /index.html [L]
+    </Directory>
+</VirtualHost>
+
+`sudo service apache2 restart`
