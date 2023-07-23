@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+app-root{
+    display: grid;
+    grid-template-rows: minmax(15vh,auto) minmax(70vh,auto) minmax(15vh,auto);
+}
+
+app-header{
+    background-color: blue;
+}
+
+app-main{
+    
+}
+
+app-footer{
+    background-color: blue;
+}

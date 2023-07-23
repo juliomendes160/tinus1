@@ -25,6 +25,10 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/reset-css/reset.css",
+              "node_modules/normalize.css/normalize.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@flaticon/flaticon-uicons/css/all/all.css",
               "src/styles.css"
             ],
             "scripts": []

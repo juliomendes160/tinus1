@@ -20,6 +20,24 @@ Execute `ng e2e` para executar os testes end-to-end usando uma plataforma de sua
 Para obter mais ajuda sobre o Angular CLI, use `ng help` ou consulte a página [Angular CLI Overview and Command Reference](https://angular.io/cli).
 
 
+# CSS
+
+## Reset
+`npm install reset-css`
+[reset](https://meyerweb.com/eric/tools/css/reset/)
+
+## Nomalize
+`npm install normailze.css`
+[Normalize](https://necolas.github.io/normalize.css/)
+
+## Uicons
+`npm i @flaticon/flaticon-uicons`
+[Uicons](https://www.flaticon.com/uicons/get-started)
+
+## Bootstrap
+`npm install bootstrap`
+[Boostrap](https://getbootstrap.com/)
+
 # Github
 
 ## Sicronizar repositório

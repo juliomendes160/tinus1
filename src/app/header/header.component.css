@@ -1,0 +1,11 @@
+.d-grid{
+    justify-items: center;
+    align-items: center;
+    grid-auto-flow: column;
+    height: 100%;
+    grid-template-columns: 20% 60%;
+}
+.d-grid i{
+    color: white;
+    font-size: 2em;
+}
