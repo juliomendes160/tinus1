@@ -1,0 +1,29 @@
+*{
+    box-sizing: border-box;
+    margin: 0 ;
+    padding: 0 ;
+    border: 0 ;
+    font-family: "Times New Roman", Times, serif;
+}
+
+nav{
+  
+}
+
+.d-flex{
+    flex-direction: column;
+    row-gap: 0.5vh;
+}
+
+a{
+    display: inherit;
+    text-decoration: none;
+    color: black;
+    background-color: lightgrey;
+    font-size: 1.2em;
+    padding: 3vh 0;
+}
+
+a:hover{
+    background-color: white;
+}
