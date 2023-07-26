@@ -19,35 +19,93 @@ Execute `ng e2e` para executar os testes end-to-end usando uma plataforma de sua
 ## Ajuda adicional
 Para obter mais ajuda sobre o Angular CLI, use `ng help` ou consulte a página [Angular CLI Overview and Command Reference](https://angular.io/cli).
 
+# Github
+
+## Iniciar repositório
+```
+git init 
+
+git remote add origin https://github.com/juliomendes160/tinus1.git
+```
+
+## Tokens de acesso pessoal (clássico)
+[Gerar novo token](https://github.com/settings/tokens)
+
+## Segredos e variáveis ​​de ações
+[Novo segredo de repositório](https://github.com/juliomendes160/tinus1/settings/secrets/actions)
+
+## Fluxo de trabalho
+```
+name: Build and Deploy to gh-pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Production Files
+        run: ng build
+
+      - name: Configure Git
+        run: |
+          git config --global user.email "juliomendes160@hotmail.com"
+          git config --global user.name "Julio Mendes"
+
+      - name: Deploy to Main Branch
+        run: |
+          git checkout main
+          git add --force docs/
+          git commit --allow-empty -m "Deploy to main branch"
+          git push origin main
+      
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.tinus1 }}
+          publish_dir: docs
+          publish_branch: gh-pages
+```
 
 # CSS
 
 ## Reset
 `npm install reset-css`
 [reset](https://meyerweb.com/eric/tools/css/reset/)
+**Path:** node_modules/reset-css/reset.css
 
 ## Nomalize
 `npm install normailze.css`
 [Normalize](https://necolas.github.io/normalize.css/)
-
-## Uicons
-`npm i @flaticon/flaticon-uicons`
-[Uicons](https://www.flaticon.com/uicons/get-started)
+**Path:** node_modules/normalize.css/normalize.css
 
 ## Bootstrap
 `npm install bootstrap`
 [Boostrap](https://getbootstrap.com/)
+**Path:** node_modules/bootstrap/dist/css/bootstrap.min.css
 
-# Github
-
-## Sicronizar repositório
-
-`git init` 
-
-`git remote add origin https://github.com/juliomendes160/tinus1.git` 
-
-## Permissões de fluxo de trabalho
-Para que os arquivos de produção sejam gerados adicione o script do fluxo de trabalho e der as permissões necessárias.
+## Uicons
+`npm i @flaticon/flaticon-uicons`
+[Uicons](https://www.flaticon.com/uicons/get-started)
+**Path:** node_modules/@flaticon/flaticon-uicons/css/all/all.css
 
 # Google Cloud
 

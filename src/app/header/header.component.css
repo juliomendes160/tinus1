@@ -1,11 +1,12 @@
-.d-grid{
+:host{
+    display: grid;
     justify-items: center;
     align-items: center;
     grid-auto-flow: column;
     height: 100%;
-    grid-template-columns: 20% 60%;
+    grid-template-columns: 20% 60% 20%;
 }
-.d-grid i{
+:host i{
     color: white;
     font-size: 2em;
 }
