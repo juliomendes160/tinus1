@@ -93,7 +93,7 @@ jobs:
 **Path:** node_modules/reset-css/reset.css
 
 ## Nomalize
-`npm install normailze.css`
+`npm install normalize.css`
 [Normalize](https://necolas.github.io/normalize.css/)
 **Path:** node_modules/normalize.css/normalize.css
 

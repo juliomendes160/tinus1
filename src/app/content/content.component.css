@@ -1,0 +1,16 @@
+nav ul{
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5vh;
+}
+nav a{
+    display: inherit;
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+    padding: 3vh 0 !important;
+    background-color: lightgrey;
+}
+nav a:hover{
+    background-color: white;
+}
